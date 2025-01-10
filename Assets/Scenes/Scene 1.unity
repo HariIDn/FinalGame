@@ -366,8 +366,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.44361067, y: 0.9828074, z: 0.38832247}
-  m_Center: {x: -0.009434938, y: -0.008596182, z: -0.0114302635}
+  m_Size: {x: 0.44361067, y: 0.41273403, z: 0.38832247}
+  m_Center: {x: -0.009434938, y: 0.2764405, z: -0.0114302635}
 --- !u!1 &541226844
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,8 +379,8 @@ GameObject:
   - component: {fileID: 541226846}
   - component: {fileID: 541226845}
   m_Layer: 0
-  m_Name: Hidden Obstacle
-  m_TagString: Obstacle
+  m_Name: Hidden Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -404,8 +404,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5226283, y: 0.7814424, z: 0.5514463}
-  m_Center: {x: -0.21555448, y: -0.27053106, z: 0.55040044}
+  m_Size: {x: 0.7016324, y: 0.7814424, z: 0.5514463}
+  m_Center: {x: -0.21686135, y: -0.27053106, z: 0.55040044}
 --- !u!4 &541226846
 Transform:
   m_ObjectHideFlags: 0
@@ -1040,7 +1040,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 16176c138e4da4678ad7e9a9dd39429d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1078,13 +1078,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154781061}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.23010069, w: 0.9731669}
-  m_LocalPosition: {x: -0.10149813, y: 0.10400003, z: 0.1005572}
-  m_LocalScale: {x: 0.07838418, y: 0.6112117, z: 0.4907}
+  m_LocalRotation: {x: 0.036769807, y: 0.15551077, z: 0.22714396, w: 0.96066123}
+  m_LocalPosition: {x: -0.10149813, y: 0.10400003, z: -0.007}
+  m_LocalScale: {x: 0.07785352, y: 0.6112117, z: 0.11444596}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 329541750}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 26.606}
+  m_LocalEulerAnglesHint: {x: 0, y: 18.39, z: 26.606}
 --- !u!1 &1230734280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,7 +1145,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 16176c138e4da4678ad7e9a9dd39429d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1183,13 +1183,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230734280}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.018497944, y: 0.10400003, z: 0.1005572}
-  m_LocalScale: {x: 0.07838418, y: 0.6112117, z: 0.4907}
+  m_LocalRotation: {x: -0.07505052, y: -0.1079004, z: -0.065617464, w: 0.98915076}
+  m_LocalPosition: {x: -0.018497944, y: 0.10400003, z: -0.008}
+  m_LocalScale: {x: 0.07838418, y: 0.6112117, z: 0.13387278}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 329541750}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -9.36, y: -11.909, z: -6.612}
 --- !u!1 &1249399685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,7 +1424,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 16176c138e4da4678ad7e9a9dd39429d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1462,13 +1462,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386263897}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.23010126, w: 0.9731667}
-  m_LocalPosition: {x: 0.07650185, y: 0.10400003, z: 0.1005572}
-  m_LocalScale: {x: 0.080154486, y: 0.6112117, z: 0.4907}
+  m_LocalRotation: {x: -0.17817293, y: -0.37057576, z: -0.119987935, w: 0.903621}
+  m_LocalPosition: {x: 0.07650185, y: 0.10400003, z: -0.008}
+  m_LocalScale: {x: 0.080154486, y: 0.6112117, z: 0.15188637}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 329541750}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -26.606}
+  m_LocalEulerAnglesHint: {x: -24.263, y: -43.449, z: -5.337}
 --- !u!1 &1658151094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pilarObstacle: {fileID: 813031973}
-  hiddenObstacle: {fileID: 541226844}
+  hiddenWall: {fileID: 541226844}
   thorn: {fileID: 329541749}
   gameMgrScript: {fileID: 788016338}
 --- !u!1001 &1682917214
@@ -1753,14 +1753,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar Obstacle
       objectReference: {fileID: 0}
-    - target: {fileID: 1193177938962057639, guid: a471aa706c817bd43a330cea08fcfe10, type: 3}
-      propertyPath: m_TagString
-      value: Obstacle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4253619425528136078, guid: a471aa706c817bd43a330cea08fcfe10, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5882880410857718352, guid: a471aa706c817bd43a330cea08fcfe10, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.44
@@ -1799,10 +1791,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5882880410857718352, guid: a471aa706c817bd43a330cea08fcfe10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6073276168171642772, guid: a471aa706c817bd43a330cea08fcfe10, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

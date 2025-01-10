@@ -5,7 +5,7 @@ public class trigerChallange : MonoBehaviour
 {
     // Referensi ke objek obstacle pertama dan kedua
     public GameObject pilarObstacle; // Objek kedua
-    public GameObject hiddenObstacle;
+    public GameObject hiddenWall;
     private float moveSpeed2 = 8.0f; // Kecepatan gerakan ke kanan untuk obstacle2
     private float destroyLimitX = 20f;
 
@@ -42,11 +42,10 @@ public class trigerChallange : MonoBehaviour
 
             StartCoroutine(gameMgrScript.SpawnEnemyWithDelay(4f)); // Menunggu 2 detik sebelum spawn enemy // Memanggil SpawnEnemy di gameManager
 
-            Destroy(hiddenObstacle);
-
             GetComponent<Collider>().enabled = false; // Menonaktifkan trigger agar hanya sekali
 
             thorn.SetActive(true); // Aktifkan
+            hiddenWall.SetActive(false);
         }
     }
 
