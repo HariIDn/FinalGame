@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class trigerPlatform : MonoBehaviour
 {
-public GameObject platform; // Objek yang ingin dinonaktifkan sementara
+    public GameObject platform; // Objek yang ingin dinonaktifkan sementara
     private float disableDuration = 1f; // Durasi objek dinonaktifkan (dalam detik)
 
     private void OnTriggerEnter(Collider other)

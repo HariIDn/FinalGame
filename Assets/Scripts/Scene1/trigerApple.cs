@@ -5,7 +5,7 @@ using UnityEngine;
 public class trigerApple : MonoBehaviour
 {
     // Referensi ke gameManager untuk memanggil SpawnEnemy
-    public gameManager gameMgrScript;
+    private gameManager gameMgrScript;
     private GameObject enemy;
 
     // Start is called before the first frame update

@@ -10,11 +10,17 @@ public class gameManager : MonoBehaviour
     public GameObject Pear;
     public GameObject UpDownPlatform;
 
+    public GameObject BridgePlatform;
+    public Vector3 spawnPositionBridge = new Vector3(-5.68f, 3.59f, 0); // Posisi awal spawn platform
+    public int numberOfBridgePlatforms = 5; // Jumlah platform maksimum
+    private int currentPlatformIndex = 0; // Indeks platform saat ini
+
+
     private Vector3 spawnPositionEnemy = new Vector3(9.5f, -3.455f, 0.0f); // Posisi spawn enemy
     private Vector3 spawnPositionObstacle = new Vector3(0f, 7f, 0f); // Posisi awal obstacle
     private Vector3 spawnPositionApple = new Vector3(-4.4f, -3.366f, 0f); // Posisi awal apel
     private Vector3 spawnPositionPear = new Vector3(-8.06f, 4f, 0f); // Posisi awal pear
-    private Vector3 startPositionPlatform; // Posisi awal platform
+    public Vector3 bridgePlatformPosition = new Vector3(0f, 2f, 0f);
 
     private float obstacleSpeed = 18.0f; // Kecepatan obstacle turun
     public float movementDistance = 2.0f; // Jarak gerakan platform ke atas atau ke bawah
@@ -25,10 +31,7 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (UpDownPlatform != null)
-        {
-            startPositionPlatform = UpDownPlatform.transform.position; // Simpan posisi awal platform
-        }
+        currentPlatformIndex = 0; // Reset indeks
     }
 
     // Update is called once per frame
@@ -125,6 +128,27 @@ public class gameManager : MonoBehaviour
             }
             elapsedTime += Time.deltaTime;
             yield return null; // Tunggu frame berikutnya
+        }
+    }
+    
+    // Fungsi untuk spawn satu bridge platform
+    public void SpawnBridgePlatform()
+    {
+        // Spawn platform di posisi tertentu
+        Vector3 spawnPosition = spawnPositionBridge + new Vector3(-5.68f, 3.59f, currentPlatformIndex * 2f);
+        GameObject platform = Instantiate(BridgePlatform, spawnPosition, Quaternion.identity);
+
+        // Tambahkan script bridgePlatform untuk mendeteksi saat platform dihancurkan
+        platform.GetComponent<bridgePlatform>().OnPlatformDestroyedCallback = OnPlatformDestroyed;
+
+        currentPlatformIndex++; // Increment indeks platform
+    }
+
+    public void OnPlatformDestroyed()
+    {
+        if (currentPlatformIndex < numberOfBridgePlatforms) // Pastikan tidak melebihi batas
+        {
+            SpawnBridgePlatform(); // Spawn platform berikutnya
         }
     }
 }

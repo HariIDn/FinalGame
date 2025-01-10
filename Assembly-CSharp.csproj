@@ -62,14 +62,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Scene1\gameManager.cs" />
     <Compile Include="Assets\Scripts\Scene1\trigerPlatform.cs" />
+    <Compile Include="Assets\Scripts\Scene1\bridgePlatform.cs" />
     <Compile Include="Assets\Scripts\Scene1\player.cs" />
-    <Compile Include="Assets\Scripts\Scene1\PlatformTrigger.cs" />
     <Compile Include="Assets\Scripts\Scene1\trigerApple.cs" />
     <Compile Include="Assets\Scripts\Scene1\moveEnemy.cs" />
     <Compile Include="Assets\Scripts\Scene1\trigerPear.cs" />
     <Compile Include="Assets\Scripts\Scene1\trigerChallange.cs" />
-    <Compile Include="Assets\Scripts\Scene1\trigerObstacleBom.cs" />
-    <Compile Include="Assets\Scripts\Scene1\obstacles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\1 Library\_Source_Files\_LICENSE.txt" />

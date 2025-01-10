@@ -12,7 +12,7 @@ public class trigerChallange : MonoBehaviour
     public GameObject thorn;
 
     // Referensi ke gameManager untuk memanggil SpawnEnemy
-    public gameManager gameMgrScript;
+    private gameManager gameMgrScript;
 
     private void Start()
     {

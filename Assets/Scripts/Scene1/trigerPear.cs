@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class trigerPear : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private gameManager gameMgrScript; // Referensi ke game manager
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        gameMgrScript = GameObject.Find("Game Manager").GetComponent<gameManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,7 +16,10 @@ public class trigerPear : MonoBehaviour
         // Mengecek apakah yang masuk adalah player
         if (other.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            // Panggil fungsi untuk memunculkan platform di posisi yang sudah diatur di gameManager
+            gameMgrScript.SpawnBridgePlatform();
+
+            Destroy(gameObject); // Hancurkan pear
         }
     }
 }
