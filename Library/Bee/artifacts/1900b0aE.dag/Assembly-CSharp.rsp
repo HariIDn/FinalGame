@@ -360,6 +360,7 @@
 "Assets/Scripts/Scene1/trigerApple.cs"
 "Assets/Scripts/Scene1/trigerChallange.cs"
 "Assets/Scripts/Scene1/trigerObstacleBom.cs"
+"Assets/Scripts/Scene1/trigerPear.cs"
 "Assets/Scripts/Scene1/trigerPlatform.cs"
 -langversion:9.0
 /deterministic

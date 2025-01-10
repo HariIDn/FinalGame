@@ -35,6 +35,8 @@ public class trigerChallange : MonoBehaviour
             // Panggil fungsi untuk spawn obstacle
             gameMgrScript.SpawnObstacle();
 
+            gameMgrScript.SpawnApple();
+
             // Pastikan obstacle kedua tidak null dan menunggu 2 detik sebelum bergerak
             StartCoroutine(WaitAndMoveObstacleToRight(pilarObstacle, 1.5f)); // Menunggu 2 detik dan bergerak ke kanan
 

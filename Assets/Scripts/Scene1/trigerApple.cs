@@ -30,6 +30,7 @@ public class trigerApple : MonoBehaviour
             enemy = GameObject.FindGameObjectWithTag("Enemy");
 
             gameMgrScript.SpawnPlatform();
+            gameMgrScript.SpawnPear();
             Destroy(enemy);
             Destroy(gameObject);
         }

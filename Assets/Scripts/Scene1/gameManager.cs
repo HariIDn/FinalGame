@@ -7,11 +7,13 @@ public class gameManager : MonoBehaviour
     public GameObject Enemy;
     public GameObject Obstacle;
     public GameObject Apple;
+    public GameObject Pear;
     public GameObject UpDownPlatform;
 
     private Vector3 spawnPositionEnemy = new Vector3(9.5f, -3.455f, 0.0f); // Posisi spawn enemy
     private Vector3 spawnPositionObstacle = new Vector3(0f, 7f, 0f); // Posisi awal obstacle
     private Vector3 spawnPositionApple = new Vector3(-4.4f, -3.366f, 0f); // Posisi awal apel
+    private Vector3 spawnPositionPear = new Vector3(-8.06f, 4f, 0f); // Posisi awal pear
     private Vector3 startPositionPlatform; // Posisi awal platform
 
     private float obstacleSpeed = 18.0f; // Kecepatan obstacle turun
@@ -45,6 +47,11 @@ public class gameManager : MonoBehaviour
     public void SpawnApple()
     {
         Instantiate(Apple, spawnPositionApple, Quaternion.identity); // Menambahkan rotasi default
+    }
+
+    public void SpawnPear()
+    {
+        Instantiate(Pear, spawnPositionPear, Quaternion.identity); // Menambahkan rotasi default
     }
 
     // Fungsi untuk Spawn Enemy dengan Delay

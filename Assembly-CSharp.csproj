@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Scene1\PlatformTrigger.cs" />
     <Compile Include="Assets\Scripts\Scene1\trigerApple.cs" />
     <Compile Include="Assets\Scripts\Scene1\moveEnemy.cs" />
+    <Compile Include="Assets\Scripts\Scene1\trigerPear.cs" />
     <Compile Include="Assets\Scripts\Scene1\trigerChallange.cs" />
     <Compile Include="Assets\Scripts\Scene1\trigerObstacleBom.cs" />
     <Compile Include="Assets\Scripts\Scene1\obstacles.cs" />

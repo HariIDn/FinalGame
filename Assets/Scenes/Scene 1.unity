@@ -698,7 +698,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bc90d48240dd64916900ac98e11b3e5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -759,7 +759,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 8646563624030454369, guid: f2fa468cbb33f5a47909a32298db36c8, type: 3}
   Obstacle: {fileID: 2456250060993293820, guid: f87077c4d88919941ae7f6c9a19b3792, type: 3}
-  Apple: {fileID: 2998568780801890079, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
+  Apple: {fileID: 9138715407970538037, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
+  Pear: {fileID: 8862870298831054914, guid: 9984604893dead841a63ac674733a214, type: 3}
   UpDownPlatform: {fileID: 123364289}
   movementDistance: 2
   platformSpeed: 2
@@ -1539,79 +1540,6 @@ MonoBehaviour:
   hiddenWall: {fileID: 541226844}
   thorn: {fileID: 329541749}
   gameMgrScript: {fileID: 788016338}
---- !u!1001 &1682917214
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -2360944745837890397, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: thorn
-      value: 
-      objectReference: {fileID: 329541749}
-    - target: {fileID: -2360944745837890397, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: platform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: -2360944745837890397, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: gameMgrScript
-      value: 
-      objectReference: {fileID: 788016338}
-    - target: {fileID: -2360944745837890397, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: hiddenObstacle2
-      value: 
-      objectReference: {fileID: 329541749}
-    - target: {fileID: 2998568780801890079, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: m_Name
-      value: Apple
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115580638573418553, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115580638573418553, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.366
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115580638573418553, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115580638573418553, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115580638573418553, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115580638573418553, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115580638573418553, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115580638573418553, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115580638573418553, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115580638573418553, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
 --- !u!1 &1764610026 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 112640, guid: c7ca0992ba00761469f731111e56b107, type: 3}
@@ -1814,5 +1742,4 @@ SceneRoots:
   - {fileID: 788016339}
   - {fileID: 541226846}
   - {fileID: 135896898}
-  - {fileID: 1682917214}
   - {fileID: 329541750}
