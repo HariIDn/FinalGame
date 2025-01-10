@@ -51,12 +51,12 @@ public class player : MonoBehaviour
             jumpCount++;
         }
     }
-
     private void OnCollisionEnter(Collision other)
     {
+        // Reset lompatan saat menyentuh tanah atau pilar
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pillar"))
         {
-            jumpCount = 0; // Reset lompatan saat menyentuh tanah atau pilar
+            jumpCount = 0;
         }
 
         // Menangani tabrakan dengan musuh
@@ -69,7 +69,8 @@ public class player : MonoBehaviour
         // Menangani tabrakan dengan obstacle
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            Destroy(gameObject); // Menghancurkan player ketika bertabrakan dengan obstacle
+            // Menghancurkan player ketika bertabrakan dengan obstacle
+            Destroy(gameObject);
         }
     }
 }

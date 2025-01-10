@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5073149532041692861}
   - component: {fileID: 25193276655506234}
   - component: {fileID: 3191354618954595844}
-  - component: {fileID: 4867228399992101753}
+  - component: {fileID: 3225886141949527395}
   m_Layer: 0
   m_Name: Pillar
   m_TagString: Pillar
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.194, y: -3.024, z: -0.995}
-  m_LocalScale: {x: 0.55455863, y: 0.56219333, z: 0.55514514}
+  m_LocalScale: {x: 0.55455863, y: 1.4912256, z: 0.55514514}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4867228399992101753
+--- !u!65 &3225886141949527395
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,5 +103,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 2, z: 1.0000002}
-  m_Center: {x: 0, y: 0, z: -0.000000107367676}
+  m_Size: {x: 0.69904804, y: 2, z: 0.6732234}
+  m_Center: {x: 0.019627148, y: 0, z: 0.01960652}

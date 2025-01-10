@@ -4,12 +4,12 @@ using UnityEngine;
 public class trigerChallange : MonoBehaviour
 {
     // Referensi ke objek obstacle pertama dan kedua
-    public GameObject obstacle;
-    public GameObject obstacle2;
-    
-    private float speed = 18.0f; // Kecepatan turun
+    public GameObject pilarObstacle; // Objek kedua
+    public GameObject hiddenObstacle;
     private float moveSpeed2 = 8.0f; // Kecepatan gerakan ke kanan untuk obstacle2
     private float destroyLimitX = 20f;
+
+    public GameObject thorn;
 
     // Referensi ke gameManager untuk memanggil SpawnEnemy
     public gameManager gameMgrScript;
@@ -20,6 +20,11 @@ public class trigerChallange : MonoBehaviour
         gameMgrScript = GameObject.Find("Game Manager").GetComponent<gameManager>();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     // Fungsi untuk mendeteksi player yang masuk trigger
     private void OnTriggerEnter(Collider other)
@@ -27,49 +32,28 @@ public class trigerChallange : MonoBehaviour
         // Mengecek apakah yang masuk adalah player
         if (other.CompareTag("Player"))
         {
-            // Pastikan obstacle pertama tidak null
-            if (obstacle != null)
-            {
-                // Memulai Coroutine untuk menurunkan obstacle pertama
-                StartCoroutine(Bomb(obstacle));
-            }
+            // Panggil fungsi untuk spawn obstacle
+            gameMgrScript.SpawnObstacle();
 
             // Pastikan obstacle kedua tidak null dan menunggu 2 detik sebelum bergerak
-            if (obstacle2 != null)
-            {
-                StartCoroutine(PillarObs(obstacle2, 1.5f)); // Menunggu 2 detik dan bergerak ke kanan
-            }
+            StartCoroutine(WaitAndMoveObstacleToRight(pilarObstacle, 1.5f)); // Menunggu 2 detik dan bergerak ke kanan
 
             // Memanggil fungsi SpawnEnemy dari gameManager setelah trigger aktif
-            if (gameMgrScript != null)
-            {
-                StartCoroutine(gameMgrScript.SpawnEnemyWithDelay(7f)); // Menunggu 2 detik sebelum spawn enemy // Memanggil SpawnEnemy di gameManager
-            }
+
+            StartCoroutine(gameMgrScript.SpawnEnemyWithDelay(3f)); // Menunggu 2 detik sebelum spawn enemy // Memanggil SpawnEnemy di gameManager
+
+            Destroy(hiddenObstacle);
 
             GetComponent<Collider>().enabled = false; // Menonaktifkan trigger agar hanya sekali
+
+            thorn.SetActive(true); // Aktifkan
         }
     }
 
-    // Coroutine untuk memindahkan obstacle secara bertahap (ke bawah)
-    private IEnumerator Bomb(GameObject obstacleToMove)
+    // Coroutine untuk menunggu 2 detik sebelum memindahkan obstacle kedua ke kanan
+    private IEnumerator WaitAndMoveObstacleToRight(GameObject obstacleToMove, float waitTime)
     {
-        while (obstacleToMove != null && obstacleToMove.transform.position.y > -10f) // Batas bawah
-        {
-            obstacleToMove.transform.Translate(Vector3.down * speed * Time.deltaTime); // Gerakan perlahan ke bawah
-            yield return null; // Tunggu frame berikutnya
-        }
-
-        // Hancurkan obstacle pertama jika mencapai batas bawah
-        if (obstacleToMove != null && obstacleToMove.transform.position.y <= -10f)
-        {
-            Destroy(obstacleToMove); // Menghapus objek dari scene
-        }
-    }
-
-    // Coroutine untuk menunggu sebelum memindahkan obstacle kedua ke kanan
-    private IEnumerator PillarObs(GameObject obstacleToMove, float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime); // Menunggu selama waktu yang ditentukan
+        yield return new WaitForSeconds(waitTime); // Menunggu selama waktu yang ditentukan (2 detik)
 
         // Memindahkan obstacle kedua ke kanan secara perlahan
         while (obstacleToMove != null)

@@ -5,20 +5,27 @@ using UnityEngine;
 public class gameManager : MonoBehaviour
 {
     public GameObject Enemy;
+    public GameObject Obstacle;
+    public GameObject Apple;
     public GameObject UpDownPlatform;
 
-    private Vector3 startPosition; // Posisi awal platform
-    public float movementDistance = 2.0f; // Jarak gerakan platform ke atas atau ke bawah
-    public float speed = 2.0f; // Kecepatan gerakan
+    private Vector3 spawnPositionEnemy = new Vector3(9.5f, -3.455f, 0.0f); // Posisi spawn enemy
+    private Vector3 spawnPositionObstacle = new Vector3(0f, 7f, 0f); // Posisi awal obstacle
+    private Vector3 spawnPositionApple = new Vector3(-4.4f, -3.366f, 0f); // Posisi awal apel
+    private Vector3 startPositionPlatform; // Posisi awal platform
 
-    private bool isMoving = false; // Menandai apakah platform sedang bergerak
+    private float obstacleSpeed = 18.0f; // Kecepatan obstacle turun
+    public float movementDistance = 2.0f; // Jarak gerakan platform ke atas atau ke bawah
+    public float platformSpeed = 2.0f; // Kecepatan gerakan platform
+
+    private bool isMovingPlatform = false; // Menandai apakah platform sedang bergerak
 
     // Start is called before the first frame update
     void Start()
     {
         if (UpDownPlatform != null)
         {
-            startPosition = UpDownPlatform.transform.position; // Simpan posisi awal platform
+            startPositionPlatform = UpDownPlatform.transform.position; // Simpan posisi awal platform
         }
     }
 
@@ -28,37 +35,78 @@ public class gameManager : MonoBehaviour
 
     }
 
-    public void SpawnEnemyandPlatform() // nama SpawnObject harus sama dengan di InvokeRepeating
+    // Fungsi untuk Spawn Enemy
+    public void SpawnEnemy()
     {
-        Instantiate(Enemy, new Vector3(9.5f, -3.455f, 0.0f), Enemy.transform.rotation);
-        UpDownPlatform.SetActive(true);
+        Instantiate(Enemy, spawnPositionEnemy, Enemy.transform.rotation);
+    }
 
-        if (!isMoving)
+    // Fungsi untuk Spawn Apple
+    public void SpawnApple()
+    {
+        Instantiate(Apple, spawnPositionApple, Quaternion.identity); // Menambahkan rotasi default
+    }
+
+    // Fungsi untuk Spawn Enemy dengan Delay
+    public IEnumerator SpawnEnemyWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Menunggu selama waktu yang ditentukan
+        SpawnEnemy();
+    }
+
+    // Fungsi untuk Spawn Obstacle
+    public void SpawnObstacle()
+    {
+        if (Obstacle != null)
+        {
+            GameObject spawnedObstacle = Instantiate(Obstacle, spawnPositionObstacle, Quaternion.identity);
+            StartCoroutine(MoveObstacleDown(spawnedObstacle));
+        }
+    }
+
+    // Coroutine untuk menggerakkan Obstacle ke bawah
+    private IEnumerator MoveObstacleDown(GameObject obstacleToMove)
+    {
+        while (obstacleToMove != null && obstacleToMove.transform.position.y > -10f) // Batas bawah
+        {
+            obstacleToMove.transform.Translate(Vector3.down * obstacleSpeed * Time.deltaTime);
+            yield return null; // Tunggu frame berikutnya
+        }
+
+        if (obstacleToMove != null && obstacleToMove.transform.position.y <= -10f)
+        {
+            Destroy(obstacleToMove); // Hapus obstacle jika melewati batas
+        }
+    }
+
+    // Fungsi untuk Spawn Enemy dan Platform
+    public void SpawnPlatform()
+    {
+        UpDownPlatform.SetActive(true); // Aktifkan platform
+
+        if (!isMovingPlatform)
         {
             StartCoroutine(MovePlatform());
         }
     }
 
-    public IEnumerator SpawnEnemyWithDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay); // Menunggu selama waktu yang ditentukan
-        SpawnEnemyandPlatform(); // Memanggil SpawnEnemy setelah delay
-    }
-
+    // Coroutine untuk menggerakkan platform
     private IEnumerator MovePlatform()
     {
-        isMoving = true; // Menandai platform sedang bergerak
+        isMovingPlatform = true; // Menandai platform sedang bergerak
 
         while (true)
         {
-            // Gerakan ke atas selama 2 detik
-            yield return MoveForDuration(Vector3.up, 2.0f);
 
             // Gerakan ke bawah selama 2 detik
             yield return MoveForDuration(Vector3.down, 2.0f);
+
+            // Gerakan ke atas selama 2 detik
+            yield return MoveForDuration(Vector3.up, 2.0f);
         }
     }
 
+    // Coroutine untuk menggerakkan platform selama durasi tertentu
     private IEnumerator MoveForDuration(Vector3 direction, float duration)
     {
         float elapsedTime = 0f;
@@ -66,7 +114,7 @@ public class gameManager : MonoBehaviour
         {
             if (UpDownPlatform != null)
             {
-                UpDownPlatform.transform.position += direction * speed * Time.deltaTime;
+                UpDownPlatform.transform.position += direction * platformSpeed * Time.deltaTime;
             }
             elapsedTime += Time.deltaTime;
             yield return null; // Tunggu frame berikutnya
