@@ -366,8 +366,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.44361067, y: 0.41273403, z: 0.38832247}
-  m_Center: {x: -0.009434938, y: 0.2764405, z: -0.0114302635}
+  m_Size: {x: 0.59, y: 0.41273403, z: 0.38832247}
+  m_Center: {x: 0, y: 0.2764405, z: -0.0114302635}
 --- !u!1 &541226844
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +762,10 @@ MonoBehaviour:
   Apple: {fileID: 9138715407970538037, guid: 118cd610a10903544b94a9f32a414dac, type: 3}
   Pear: {fileID: 8862870298831054914, guid: 9984604893dead841a63ac674733a214, type: 3}
   UpDownPlatform: {fileID: 123364289}
+  BridgePlatform: {fileID: 3769778776335880700, guid: 1c066df97621b394cac6265917a37b8c, type: 3}
+  spawnPositionBridge: {x: -5.68, y: 3.59, z: 0}
+  numberOfBridgePlatforms: 5
+  bridgePlatformPosition: {x: 0, y: 2, z: 0}
   movementDistance: 2
   platformSpeed: 2
 --- !u!4 &788016339
@@ -1539,7 +1543,6 @@ MonoBehaviour:
   pilarObstacle: {fileID: 813031973}
   hiddenWall: {fileID: 541226844}
   thorn: {fileID: 329541749}
-  gameMgrScript: {fileID: 788016338}
 --- !u!1 &1764610026 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 112640, guid: c7ca0992ba00761469f731111e56b107, type: 3}

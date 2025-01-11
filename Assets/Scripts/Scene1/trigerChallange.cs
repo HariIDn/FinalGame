@@ -46,7 +46,7 @@ public class trigerChallange : MonoBehaviour
 
             GetComponent<Collider>().enabled = false; // Menonaktifkan trigger agar hanya sekali
 
-            thorn.SetActive(true); // Aktifkan
+            Invoke(nameof(ActivateThorn), 1f);
             hiddenWall.SetActive(false);
         }
     }
@@ -71,5 +71,9 @@ public class trigerChallange : MonoBehaviour
 
             yield return null; // Tunggu frame berikutnya
         }
+    }
+    private void ActivateThorn()
+    {
+        thorn.SetActive(true);
     }
 }
