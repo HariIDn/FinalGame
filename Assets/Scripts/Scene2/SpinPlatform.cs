@@ -29,6 +29,7 @@ public class SpinPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag(playerTag))
         {
             isRotating = true; // Mulai rotasi
+            this.gameObject.SetActive(true);
         }
     }
 
@@ -47,6 +48,6 @@ public class SpinPlatform : MonoBehaviour
     {
         // Reset rotasi objek ke posisi awal pada sumbu Z
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0f);
-        transform.position = new Vector3(2.05f, 4.82f, transform.position.z);
+        transform.position = new Vector3(2.05f, 2.88f, transform.position.z);
     }
 }
