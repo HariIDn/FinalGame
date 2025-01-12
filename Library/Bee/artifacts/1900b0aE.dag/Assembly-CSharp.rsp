@@ -361,6 +361,7 @@
 "Assets/Scripts/Scene1/trigerChallange.cs"
 "Assets/Scripts/Scene1/trigerPear.cs"
 "Assets/Scripts/Scene1/trigerPlatform.cs"
+"Assets/Scripts/Scene2/gameManagerScene2.cs"
 -langversion:9.0
 /deterministic
 /optimize+
