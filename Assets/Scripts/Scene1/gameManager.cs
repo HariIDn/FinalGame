@@ -26,6 +26,7 @@ public class gameManager : MonoBehaviour
     public float platformSpeed = 2.0f; // Kecepatan gerakan platform
 
     private bool isMovingPlatform = false; // Menandai apakah platform sedang bergerak
+    private bool isGameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,11 @@ public class gameManager : MonoBehaviour
 
     }
 
+    public void GameOver()
+    {
+        isGameOver = true;
+        Time.timeScale = 0f;
+    }
     // Fungsi untuk Spawn Enemy
     public void SpawnEnemy()
     {

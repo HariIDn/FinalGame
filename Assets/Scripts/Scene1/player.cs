@@ -16,10 +16,14 @@ public class player : MonoBehaviour
     private float minX = -9.4f;
     private float maxX = 9.4f;
 
+    private gameManager gameMgrScript;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        gameMgrScript = GameObject.Find("Game Manager").GetComponent<gameManager>();
     }
 
     // Update is called once per frame
@@ -60,17 +64,13 @@ public class player : MonoBehaviour
         }
 
         // Menangani tabrakan dengan musuh
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Obstacle"))
         {
             // Menghancurkan player ketika bertabrakan dengan musuh
             Destroy(gameObject);
+            gameMgrScript.GameOver();
         }
 
-        // Menangani tabrakan dengan obstacle
-        if (other.gameObject.CompareTag("Obstacle"))
-        {
-            // Menghancurkan player ketika bertabrakan dengan obstacle
-            Destroy(gameObject);
-        }
+        
     }
 }

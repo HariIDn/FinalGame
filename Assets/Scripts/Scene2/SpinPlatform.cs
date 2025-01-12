@@ -8,7 +8,11 @@ public class SpinPlatform : MonoBehaviour
     public float rotationSpeed; // Kecepatan rotasi dalam derajat per detik
     public string playerTag = "Player"; // Tag untuk objek Player
     private bool isRotating = false; // Flag untuk memulai rotasi
-    
+
+    void Start()
+    {
+
+    }
 
     // Update is called once per frame
     void Update()
