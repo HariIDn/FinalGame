@@ -13,8 +13,8 @@ public class player : MonoBehaviour
     private int maxJumps = 2; // Batas maksimal lompatan
 
     // Batas pergerakan pada sumbu X
-    private float minX = -8.5f;
-    private float maxX = 8.5f;
+    private float minX = -9.4f;
+    private float maxX = 9.4f;
 
     // Start is called before the first frame update
     void Start()

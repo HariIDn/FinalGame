@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Scene1\gameManager.cs" />
     <Compile Include="Assets\Scripts\Scene1\trigerPlatform.cs" />
+    <Compile Include="Assets\Scripts\Scene1\Button.cs" />
     <Compile Include="Assets\Scripts\Scene1\bridgePlatform.cs" />
     <Compile Include="Assets\Scripts\Scene1\player.cs" />
     <Compile Include="Assets\Scripts\Scene1\trigerApple.cs" />

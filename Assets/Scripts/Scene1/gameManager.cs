@@ -9,6 +9,7 @@ public class gameManager : MonoBehaviour
     public GameObject Apple;
     public GameObject Pear;
     public GameObject UpDownPlatform;
+    
 
     public GameObject BridgePlatform;
     public Vector3 spawnPositionBridge = new Vector3(-5.68f, 3.59f, 0); // Posisi awal spawn platform
