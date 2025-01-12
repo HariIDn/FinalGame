@@ -656,6 +656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetY: 3
   moveSpeed: 2
+  spinPlat: {fileID: 1455929520}
 --- !u!136 &308205217
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2208,7 +2209,7 @@ GameObject:
   - component: {fileID: 1455929522}
   - component: {fileID: 1455929521}
   m_Layer: 0
-  m_Name: Cube (8)
+  m_Name: SpinPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
