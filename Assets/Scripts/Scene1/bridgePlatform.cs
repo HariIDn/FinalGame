@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class bridgePlatform : MonoBehaviour
 {
+    public delegate void PlatformDestroyed(); // Event delegate
+    public event PlatformDestroyed OnPlatformDestroyed; // Event untuk mendengarkan platform yang dihancurkan
+
     public float disappearDelay = 1f; // Waktu sebelum platform dihancurkan
-    public System.Action OnPlatformDestroyedCallback; // Callback saat platform dihancurkan
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player")) // Periksa apakah player menyentuh platform
         {
-            Destroy(gameObject, disappearDelay); // Hancurkan platform setelah delay
-            Invoke(nameof(NotifyPlatformDestroyed), disappearDelay); // Panggil callback setelah delay
+            // Hancurkan platform setelah delay
+            Destroy(gameObject, disappearDelay);
         }
     }
 
-    private void NotifyPlatformDestroyed()
+    // Fungsi ini akan dipanggil ketika platform dihancurkan
+    private void OnDestroy()
     {
-        // Panggil callback jika ada
-        OnPlatformDestroyedCallback?.Invoke();
+        if (OnPlatformDestroyed != null)
+        {
+            OnPlatformDestroyed.Invoke(); // Panggil event untuk spawn platform berikutnya
+        }
     }
 }

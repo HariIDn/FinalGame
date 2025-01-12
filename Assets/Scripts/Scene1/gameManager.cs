@@ -9,19 +9,17 @@ public class gameManager : MonoBehaviour
     public GameObject Apple;
     public GameObject Pear;
     public GameObject UpDownPlatform;
-    
+
 
     public GameObject BridgePlatform;
-    public Vector3 spawnPositionBridge = new Vector3(-5.68f, 3.59f, 0); // Posisi awal spawn platform
-    public int numberOfBridgePlatforms = 5; // Jumlah platform maksimum
-    private int currentPlatformIndex = 0; // Indeks platform saat ini
+    public Vector3[] spawnPositionsBridge; // Array untuk posisi spawn manual
+    private int spawnedPlatforms = 0; // Indeks platform yang telah muncul
 
 
     private Vector3 spawnPositionEnemy = new Vector3(9.5f, -3.455f, 0.0f); // Posisi spawn enemy
     private Vector3 spawnPositionObstacle = new Vector3(0f, 7f, 0f); // Posisi awal obstacle
     private Vector3 spawnPositionApple = new Vector3(-4.4f, -3.366f, 0f); // Posisi awal apel
     private Vector3 spawnPositionPear = new Vector3(-8.06f, 4f, 0f); // Posisi awal pear
-    public Vector3 bridgePlatformPosition = new Vector3(0f, 2f, 0f);
 
     private float obstacleSpeed = 18.0f; // Kecepatan obstacle turun
     public float movementDistance = 2.0f; // Jarak gerakan platform ke atas atau ke bawah
@@ -32,7 +30,7 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentPlatformIndex = 0; // Reset indeks
+
     }
 
     // Update is called once per frame
@@ -131,25 +129,34 @@ public class gameManager : MonoBehaviour
             yield return null; // Tunggu frame berikutnya
         }
     }
-    
-    // Fungsi untuk spawn satu bridge platform
+
+
+    // Fungsi untuk spawn platform baru
     public void SpawnBridgePlatform()
     {
-        // Spawn platform di posisi tertentu
-        Vector3 spawnPosition = spawnPositionBridge + new Vector3(-5.68f, 3.59f, currentPlatformIndex * 2f);
-        GameObject platform = Instantiate(BridgePlatform, spawnPosition, Quaternion.identity);
-
-        // Tambahkan script bridgePlatform untuk mendeteksi saat platform dihancurkan
-        platform.GetComponent<bridgePlatform>().OnPlatformDestroyedCallback = OnPlatformDestroyed;
-
-        currentPlatformIndex++; // Increment indeks platform
-    }
-
-    public void OnPlatformDestroyed()
-    {
-        if (currentPlatformIndex < numberOfBridgePlatforms) // Pastikan tidak melebihi batas
+        if (spawnedPlatforms < spawnPositionsBridge.Length) // Cek apakah masih ada posisi untuk spawn
         {
-            SpawnBridgePlatform(); // Spawn platform berikutnya
+            Vector3 spawnPosition = spawnPositionsBridge[spawnedPlatforms]; // Ambil posisi spawn berdasarkan urutan
+            GameObject newPlatform = Instantiate(BridgePlatform, spawnPosition, Quaternion.identity); // Spawn platform
+            spawnedPlatforms++; // Increment jumlah platform yang sudah di-spawn
+
+            // Menambahkan event ketika platform dihancurkan untuk memicu spawn berikutnya
+            bridgePlatform platformBehavior = newPlatform.GetComponent<bridgePlatform>();
+            if (platformBehavior != null)
+            {
+                platformBehavior.OnPlatformDestroyed += HandlePlatformDestroyed; // Tambahkan event listener
+            }
+        }
+        else
+        {
+            Debug.Log("No more platforms to spawn.");
         }
     }
+
+    // Fungsi ini akan dipanggil ketika platform dihancurkan
+    private void HandlePlatformDestroyed()
+    {
+        SpawnBridgePlatform(); // Spawn platform berikutnya
+    }
+
 }

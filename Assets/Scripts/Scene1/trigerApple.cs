@@ -6,7 +6,7 @@ public class trigerApple : MonoBehaviour
 {
     // Referensi ke gameManager untuk memanggil SpawnEnemy
     private gameManager gameMgrScript;
-    private GameObject enemy;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +27,11 @@ public class trigerApple : MonoBehaviour
         // Mengecek apakah yang masuk adalah player
         if (other.CompareTag("Player"))
         {
-            enemy = GameObject.FindGameObjectWithTag("Enemy");
+            
 
             gameMgrScript.SpawnPlatform();
             gameMgrScript.SpawnPear();
-            Destroy(enemy);
+            
             Destroy(gameObject);
         }
     }
