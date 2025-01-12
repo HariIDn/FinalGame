@@ -363,6 +363,7 @@
 "Assets/Scripts/Scene1/trigerPlatform.cs"
 "Assets/Scripts/Scene2/gameManager2.cs"
 "Assets/Scripts/Scene2/PlatTrigger.cs"
+"Assets/Scripts/Scene2/SpinPlatform.cs"
 -langversion:9.0
 /deterministic
 /optimize+

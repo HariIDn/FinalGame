@@ -60,6 +60,7 @@
     <Analyzer Include="I:\UnityHub\2022.3.49f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Scene2\SpinPlatform.cs" />
     <Compile Include="Assets\Scripts\Scene2\gameManager2.cs" />
     <Compile Include="Assets\Scripts\Scene1\gameManager.cs" />
     <Compile Include="Assets\Scripts\Scene1\trigerPlatform.cs" />
