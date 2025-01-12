@@ -8,7 +8,7 @@ public class SpinPlatform : MonoBehaviour
     public float rotationSpeed; // Kecepatan rotasi dalam derajat per detik
     public string playerTag = "Player"; // Tag untuk objek Player
     private bool isRotating = false; // Flag untuk memulai rotasi
-    private float currentRotation = 0f; // Rotasi saat ini dalam derajat
+    
 
     // Update is called once per frame
     void Update()
@@ -19,15 +19,7 @@ public class SpinPlatform : MonoBehaviour
             float rotationThisFrame = rotationSpeed * Time.deltaTime;
             transform.RotateAround(pivot.position, Vector3.forward, rotationThisFrame);
 
-            // Tambahkan rotasi saat ini
-            currentRotation += rotationThisFrame;
-
-            // Hentikan rotasi setelah satu putaran penuh
-            if (currentRotation >= 360f)
-            {
-                isRotating = false;
-                currentRotation = 0f; // Reset rotasi
-            }
+            
         }
     }
 
@@ -46,25 +38,7 @@ public class SpinPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag(playerTag))
         {
             isRotating = false; // Hentikan rotasi
-            currentRotation = 0f; // Reset rotasi jika ingin mulai lagi dari awal
-            ResetRotation();
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag(playerTag))
-        {
-            isRotating = true; // Mulai rotasi
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag(playerTag))
-        {
-            isRotating = false; // Hentikan rotasi
-            currentRotation = 0f; // Reset rotasi jika ingin mulai lagi dari awal
+            
             ResetRotation();
         }
     }
