@@ -7,6 +7,8 @@ public class Button : MonoBehaviour
     public float targetY = 3f; // Target y position
     public float moveSpeed = 2f; // Speed of the movement
 
+    public GameObject spinPlat;
+
     private bool isMoving = false;
     private Vector3 targetPosition;
 
@@ -38,6 +40,7 @@ public class Button : MonoBehaviour
         {
             targetPosition = new Vector3(transform.position.x, targetY, transform.position.z);
             isMoving = true;
+            spinPlat.SetActive(false);
         }
     }
 }
