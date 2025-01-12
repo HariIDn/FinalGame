@@ -763,9 +763,13 @@ MonoBehaviour:
   Pear: {fileID: 8862870298831054914, guid: 9984604893dead841a63ac674733a214, type: 3}
   UpDownPlatform: {fileID: 123364289}
   BridgePlatform: {fileID: 3769778776335880700, guid: 1c066df97621b394cac6265917a37b8c, type: 3}
-  spawnPositionBridge: {x: -5.68, y: 3.59, z: 0}
-  numberOfBridgePlatforms: 5
-  bridgePlatformPosition: {x: 0, y: 2, z: 0}
+  spawnPositionsBridge:
+  - {x: -6, y: 4, z: 0}
+  - {x: -4, y: 3, z: 0}
+  - {x: -2, y: 2, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: -2, y: 2, z: 0}
+  - {x: 2, y: 3, z: 0}
   movementDistance: 2
   platformSpeed: 2
 --- !u!4 &788016339
