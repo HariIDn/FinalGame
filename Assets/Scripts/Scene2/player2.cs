@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : MonoBehaviour
+public class player2 : MonoBehaviour
 {
     private Rigidbody playerRb;
     public float speed = 0.0f;
@@ -16,7 +16,7 @@ public class player : MonoBehaviour
     private float minX = -9.4f;
     private float maxX = 9.4f;
 
-    private gameManager gameMgrScript;
+    private gameManager2 gameMgrScript;
 
 
 
@@ -24,7 +24,7 @@ public class player : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        gameMgrScript = GameObject.Find("Game Manager").GetComponent<gameManager>();
+        gameMgrScript = GameObject.Find("Game Manager").GetComponent<gameManager2>();
 
     }
 
@@ -74,6 +74,6 @@ public class player : MonoBehaviour
 
         }
 
-        
+
     }
 }

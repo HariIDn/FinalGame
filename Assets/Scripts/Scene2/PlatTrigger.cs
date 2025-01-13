@@ -10,7 +10,7 @@ public class PlatTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gm2 = GameObject.Find("GameManager").GetComponent<gameManager2>();
+        gm2 = GameObject.Find("Game Manager").GetComponent<gameManager2>();
     }
 
     // Update is called once per frame

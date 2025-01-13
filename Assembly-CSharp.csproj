@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Scene2\SpinPlatform.cs" />
     <Compile Include="Assets\Scripts\Scene2\gameManager2.cs" />
+    <Compile Include="Assets\Scripts\Scene2\player2.cs" />
     <Compile Include="Assets\Scripts\StartScript.cs" />
     <Compile Include="Assets\Scripts\Finish.cs" />
     <Compile Include="Assets\Scripts\Scene2\BombTriggerScript.cs" />

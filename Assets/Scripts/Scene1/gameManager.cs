@@ -95,7 +95,7 @@ public class gameManager : MonoBehaviour
 
     public void ReduceLive()
     {
-        mainManager.Instance.live -= 1;
+        mainManager.Instance.ReduceLives();
         livestext.text = ": " + mainManager.Instance.live;
     }
 

@@ -365,6 +365,7 @@
 "Assets/Scripts/Scene2/Button.cs"
 "Assets/Scripts/Scene2/gameManager2.cs"
 "Assets/Scripts/Scene2/PlatTrigger.cs"
+"Assets/Scripts/Scene2/player2.cs"
 "Assets/Scripts/Scene2/SpinPlatform.cs"
 "Assets/Scripts/StartScript.cs"
 -langversion:9.0

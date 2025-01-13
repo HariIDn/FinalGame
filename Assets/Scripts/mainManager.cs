@@ -7,7 +7,7 @@ using System;
 public class mainManager : MonoBehaviour
 {
 
-    public int live;
+    public int live = 3;
 
     public static mainManager Instance;
 
@@ -51,5 +51,10 @@ public class mainManager : MonoBehaviour
             live = data.livex;
         }
 
+    }
+
+    public void ReduceLives()
+    {
+        live -= 1;
     }
 }
