@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +33,8 @@ public class gameManager : MonoBehaviour
     public AudioClip gameOverSound2; // Tambahkan AudioClip untuk Game Over kedua
     private AudioSource audioSource; // Komponen AudioSource
 
+    public TextMeshProUGUI livestext;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,8 @@ public class gameManager : MonoBehaviour
         {
             Debug.LogError("AudioSource is not attached to the GameManager!");
         }
+
+        livestext.text = ": " + mainManager.Instance.live;
     }
 
     // Update is called once per frame
@@ -72,6 +77,7 @@ public class gameManager : MonoBehaviour
         {
             audioSource.PlayOneShot(gameOverSound2);
             memeImages.SetActive(true);
+            ReduceLive();
         }
 
         // Tunggu hingga suara kedua selesai sebelum restart
@@ -81,10 +87,16 @@ public class gameManager : MonoBehaviour
         }
 
         // Restart scene
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
 
         // Kembalikan Time.timeScale ke 1 sebelum memuat ulang scene
         Time.timeScale = 1f;
+    }
+
+    public void ReduceLive()
+    {
+        mainManager.Instance.live -= 1;
+        livestext.text = ": " + mainManager.Instance.live;
     }
 
     // Fungsi untuk Spawn Enemy

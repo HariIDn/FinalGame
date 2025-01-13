@@ -1183,6 +1183,7 @@ MonoBehaviour:
   platformSpeed: 2
   gameOverSound1: {fileID: 8300000, guid: a5850d233d7ec7743925733c8b75d0a4, type: 3}
   gameOverSound2: {fileID: 8300000, guid: 9bdef82e986e8c041b6f7dbcde53a226, type: 3}
+  livestext: {fileID: 1926582973}
 --- !u!4 &788016339
 Transform:
   m_ObjectHideFlags: 0
