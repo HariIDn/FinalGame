@@ -10,6 +10,7 @@ public class gameManager : MonoBehaviour
     public GameObject Apple;
     public GameObject Pear;
     public GameObject UpDownPlatform;
+    public GameObject memeImages;
 
     public GameObject BridgePlatform;
     public Vector3[] spawnPositionsBridge; // Array untuk posisi spawn manual
@@ -25,17 +26,65 @@ public class gameManager : MonoBehaviour
     public float platformSpeed = 2.0f; // Kecepatan gerakan platform
 
     private bool isMovingPlatform = false; // Menandai apakah platform sedang bergerak
+    private bool isGameOver = false;
+
+    public AudioClip gameOverSound1; // Tambahkan AudioClip untuk Game Over pertama
+    public AudioClip gameOverSound2; // Tambahkan AudioClip untuk Game Over kedua
+    private AudioSource audioSource; // Komponen AudioSource
 
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource is not attached to the GameManager!");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void GameOver()
+    {
+        isGameOver = true;
+        Time.timeScale = 0f;
+
+        // Mainkan suara Game Over pertama
+        if (audioSource != null && gameOverSound1 != null)
+        {
+            audioSource.PlayOneShot(gameOverSound1);
+        }
+
+        // Mainkan suara Game Over kedua setelah 1 detik
+        StartCoroutine(PlaySecondGameOverSound());
+        
+    }
+
+    private IEnumerator PlaySecondGameOverSound()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+
+        if (audioSource != null && gameOverSound2 != null)
+        {
+            audioSource.PlayOneShot(gameOverSound2);
+            memeImages.SetActive(true);
+        }
+
+        // Tunggu hingga suara kedua selesai sebelum restart
+        if (gameOverSound2 != null && gameOverSound2 != null)
+        {
+            yield return new WaitForSecondsRealtime(gameOverSound2.length);
+        }
+
+        // Restart scene
+        SceneManager.LoadScene(0);
+
+        // Kembalikan Time.timeScale ke 1 sebelum memuat ulang scene
+        Time.timeScale = 1f;
     }
 
     // Fungsi untuk Spawn Enemy
