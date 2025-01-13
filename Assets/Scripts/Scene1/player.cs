@@ -16,14 +16,14 @@ public class player : MonoBehaviour
     private float minX = -9.4f;
     private float maxX = 9.4f;
 
-    private gameManager gameMgrScript;
+    private mainManager mainMgrScript;
     
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        gameMgrScript = GameObject.Find("Game Manager").GetComponent<gameManager>();
+        mainMgrScript = GameObject.Find("Main Manager").GetComponent<mainManager>();
     }
 
     // Update is called once per frame
@@ -68,7 +68,7 @@ public class player : MonoBehaviour
         {
             // Menghancurkan player ketika bertabrakan dengan musuh
             Destroy(gameObject);
-            gameMgrScript.GameOver();
+            mainMgrScript.GameOver();
         }
 
         
