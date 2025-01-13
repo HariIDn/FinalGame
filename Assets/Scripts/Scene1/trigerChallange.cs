@@ -9,6 +9,10 @@ public class trigerChallange : MonoBehaviour
     private float moveSpeed2 = 8.0f; // Kecepatan gerakan ke kanan untuk obstacle2
     private float destroyLimitX = 20f;
 
+    public AudioClip spawnSound; // Klip suara saat obstacle di-spawn
+    private AudioSource audioSource; // Referensi ke AudioSource
+
+
     public GameObject thorn;
 
     // Referensi ke gameManager untuk memanggil SpawnEnemy
@@ -18,6 +22,13 @@ public class trigerChallange : MonoBehaviour
     {
         // Mendapatkan referensi gameManager secara dinamis
         gameMgrScript = GameObject.Find("Game Manager").GetComponent<gameManager>();
+
+        // Ambil komponen AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource tidak ditemukan. Tambahkan AudioSource ke GameObject ini.");
+        }
     }
 
     // Update is called once per frame
@@ -34,6 +45,9 @@ public class trigerChallange : MonoBehaviour
         {
             // Panggil fungsi untuk spawn obstacle
             gameMgrScript.SpawnObstacle();
+
+            // Mainkan suara spawn obstacle
+            PlaySpawnSound();
 
             gameMgrScript.SpawnApple();
 
@@ -75,5 +89,13 @@ public class trigerChallange : MonoBehaviour
     private void ActivateThorn()
     {
         thorn.SetActive(true);
+    }
+
+    private void PlaySpawnSound()
+    {
+        if (audioSource != null && spawnSound != null)
+        {
+            audioSource.PlayOneShot(spawnSound); // Mainkan suara spawn
+        }
     }
 }

@@ -9,9 +9,17 @@ public class SpinPlatform : MonoBehaviour
     public string playerTag = "Player"; // Tag untuk objek Player
     private bool isRotating = false; // Flag untuk memulai rotasi
 
+    public AudioClip spinSound; // Klip suara untuk spin
+    private AudioSource audioSource; // Komponen AudioSource
+
     void Start()
     {
-
+        // Ambil komponen AudioSource pada GameObject
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource tidak ditemukan. Tambahkan AudioSource ke GameObject ini.");
+        }
     }
 
     // Update is called once per frame
@@ -22,8 +30,6 @@ public class SpinPlatform : MonoBehaviour
             // Hitung rotasi per frame
             float rotationThisFrame = rotationSpeed * Time.deltaTime;
             transform.RotateAround(pivot.position, Vector3.forward, rotationThisFrame);
-
-            
         }
     }
 
@@ -33,7 +39,13 @@ public class SpinPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag(playerTag))
         {
             isRotating = true; // Mulai rotasi
-            this.gameObject.SetActive(true);
+
+            // Mainkan suara spin saat rotasi dimulai
+            if (audioSource != null && spinSound != null)
+            {
+                audioSource.clip = spinSound;
+                audioSource.Play();
+            }
         }
     }
 
@@ -43,7 +55,7 @@ public class SpinPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag(playerTag))
         {
             isRotating = false; // Hentikan rotasi
-            
+
             ResetRotation();
         }
     }

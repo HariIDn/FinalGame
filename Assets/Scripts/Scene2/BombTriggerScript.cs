@@ -6,6 +6,7 @@ public class BombTriggerScript : MonoBehaviour
 {
     private gameManager2 gm2;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class BombTriggerScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gm2.TriggerBombAndPlatform();
+
         }
     }
 }

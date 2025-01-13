@@ -27,6 +27,8 @@ public class gameManager2 : MonoBehaviour
 
     private bool hasTriggered = false;
 
+    public AudioClip triggerSound; // Klip suara untuk trigger
+
     // Start is called before the first frame update
     void Start()
     {
@@ -148,8 +150,15 @@ public class gameManager2 : MonoBehaviour
             StartCoroutine(MoveBombDown(Bomb2));
         }
 
-        
-        
+        // Mainkan suara trigger jika ada AudioSource dan AudioClip
+        if (audioSource != null && triggerSound != null)
+        {
+            audioSource.PlayOneShot(triggerSound); // Memainkan suara satu kali
+        }
+
+
+
+
     }
 
     private IEnumerator MoveBombDown(GameObject bomb)
