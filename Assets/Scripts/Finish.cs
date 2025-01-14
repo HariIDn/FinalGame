@@ -21,7 +21,18 @@ public class Finish : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            
             SceneManager.LoadScene(2);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            mainManager.Instance.SaveLivesData();
+            mainManager.Instance.StopBGM();
+            SceneManager.LoadScene(0);
         }
     }
 }

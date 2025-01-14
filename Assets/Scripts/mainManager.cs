@@ -6,13 +6,10 @@ using System;
 
 public class mainManager : MonoBehaviour
 {
-
     public int live = 3;
     public int bestScore = 0;
 
     public static mainManager Instance;
-
-    
 
     private void Awake()
     {
@@ -28,18 +25,39 @@ public class mainManager : MonoBehaviour
     [System.Serializable]
     public class PlayerData
     {
-        public int livex;
-        public int bestScorex;   // Menyimpan best score
+        public int livex;          // Jumlah nyawa tertinggi
+        public int bestScorex;     // Menyimpan best score
     }
 
     public void SaveLivesData()
     {
+        string path = Application.persistentDataPath + "/savefile.json";
         PlayerData data = new PlayerData();
-        data.livex = live;
 
-        string json = JsonUtility.ToJson(data);
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            PlayerData oldData = JsonUtility.FromJson<PlayerData>(json);
 
-        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+            if (live > oldData.bestScorex)
+            {
+                data.bestScorex = live;
+                Debug.Log("New highest lives saved: " + live);
+            }
+            else
+            {
+                data.livex = oldData.bestScorex;
+                Debug.Log("Lives did not exceed previous highest: " + oldData.bestScorex);
+            }
+        }
+        else
+        {
+            data.bestScorex = live;
+            Debug.Log("First time saving lives: " + live);
+        }
+
+        string newJson = JsonUtility.ToJson(data);
+        File.WriteAllText(path, newJson);
     }
 
     public void LoadLivesData()
@@ -48,23 +66,28 @@ public class mainManager : MonoBehaviour
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
-
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
-            live = data.livex;
-        }
 
+            live = data.bestScorex;
+            Debug.Log("Loaded highest lives: " + live);
+        }
+        else
+        {
+            Debug.Log("No save file found. Starting with default lives: " + live);
+        }
     }
 
     public void ReduceLives()
     {
         live -= 1;
     }
+
     public void StopBGM()
     {
         AudioSource audioSource = GetComponent<AudioSource>();
         if (audioSource != null && audioSource.isPlaying)
         {
-            audioSource.Stop(); // Hentikan musik
+            audioSource.Stop();
             Debug.Log("BGM stopped.");
         }
     }
@@ -74,9 +97,8 @@ public class mainManager : MonoBehaviour
         AudioSource audioSource = GetComponent<AudioSource>();
         if (audioSource != null && !audioSource.isPlaying)
         {
-            audioSource.Play(); // Putar musik
+            audioSource.Play();
             Debug.Log("BGM played.");
         }
     }
-
 }

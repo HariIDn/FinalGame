@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StartScript : MonoBehaviour
 {
 
-    
+    public TextMeshProUGUI bestscoretext;
     // Start is called before the first frame update
     void Start()
     {
+        mainManager.Instance.LoadLivesData();
+        bestscoretext.text = "Best Score: " + mainManager.Instance.live;
         
     }
 
@@ -25,6 +28,7 @@ public class StartScript : MonoBehaviour
         if (mainManager.Instance != null)
         {
             mainManager.Instance.PlayBGM(); // Mainkan musik BGM
+            mainManager.Instance.live = 3;
         }
 
         // Pindah ke Scene berikutnya (Scene 1)
