@@ -168,7 +168,7 @@ public class gameManager2 : MonoBehaviour
 
     public void MovetoMainMenuGame()
     {
-
+        mainManager.Instance.StopBGM();
         SceneManager.LoadScene(0);
     }
 }

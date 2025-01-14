@@ -21,7 +21,14 @@ public class StartScript : MonoBehaviour
 
     public void StartGame()
     {
-        
+        // Pastikan mainManager.Instance tidak null sebelum memanggil PlayBGM
+        if (mainManager.Instance != null)
+        {
+            mainManager.Instance.PlayBGM(); // Mainkan musik BGM
+        }
+
+        // Pindah ke Scene berikutnya (Scene 1)
         SceneManager.LoadScene(1);
     }
+
 }

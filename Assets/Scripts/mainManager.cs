@@ -8,6 +8,7 @@ public class mainManager : MonoBehaviour
 {
 
     public int live = 3;
+    public int bestScore = 0;
 
     public static mainManager Instance;
 
@@ -28,9 +29,10 @@ public class mainManager : MonoBehaviour
     public class PlayerData
     {
         public int livex;
+        public int bestScorex;   // Menyimpan best score
     }
 
-    public void SaveScoreData()
+    public void SaveLivesData()
     {
         PlayerData data = new PlayerData();
         data.livex = live;
@@ -40,7 +42,7 @@ public class mainManager : MonoBehaviour
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
 
-    public void LoadScoreData()
+    public void LoadLivesData()
     {
         string path = Application.persistentDataPath + "/savefile.json";
         if (File.Exists(path))
@@ -57,4 +59,24 @@ public class mainManager : MonoBehaviour
     {
         live -= 1;
     }
+    public void StopBGM()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop(); // Hentikan musik
+            Debug.Log("BGM stopped.");
+        }
+    }
+
+    public void PlayBGM()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource != null && !audioSource.isPlaying)
+        {
+            audioSource.Play(); // Putar musik
+            Debug.Log("BGM played.");
+        }
+    }
+
 }

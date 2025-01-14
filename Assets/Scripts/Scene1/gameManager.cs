@@ -45,6 +45,7 @@ public class gameManager : MonoBehaviour
         }
 
         livestext.text = ": " + mainManager.Instance.live;
+
     }
 
     // Update is called once per frame
@@ -224,7 +225,13 @@ public class gameManager : MonoBehaviour
 
     public void MovetoMainMenuGame()
     {
+        // Hentikan musik di Main Manager jika ada
+        if (mainManager.Instance != null)
+        {
+            mainManager.Instance.StopBGM(); // Panggil fungsi untuk menghentikan BGM
+        }
 
+        // Pindah ke Main Menu (scene 0)
         SceneManager.LoadScene(0);
     }
 
