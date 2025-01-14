@@ -24,6 +24,7 @@ public class BombTriggerScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gm2.TriggerBombAndPlatform();
+            Destroy(gameObject);
 
         }
     }

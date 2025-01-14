@@ -21,9 +21,9 @@ public class bridgePlatform : MonoBehaviour
     // Fungsi ini akan dipanggil ketika platform dihancurkan
     private void OnDestroy()
     {
-        if (OnPlatformDestroyed != null)
+        if (OnPlatformDestroyed != null && gameObject != null)
         {
-            OnPlatformDestroyed.Invoke(); // Panggil event untuk spawn platform berikutnya
+            OnPlatformDestroyed.Invoke();
         }
     }
 }

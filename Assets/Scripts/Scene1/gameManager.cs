@@ -216,7 +216,16 @@ public class gameManager : MonoBehaviour
     // Fungsi ini akan dipanggil ketika platform dihancurkan
     private void HandlePlatformDestroyed()
     {
-        SpawnBridgePlatform(); // Spawn platform berikutnya
+        if (!isGameOver) // Cek apakah game belum selesai
+        {
+            SpawnBridgePlatform(); // Spawn platform berikutnya
+        }
+    }
+
+    public void MovetoMainMenuGame()
+    {
+
+        SceneManager.LoadScene(0);
     }
 
 }

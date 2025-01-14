@@ -155,10 +155,6 @@ public class gameManager2 : MonoBehaviour
         {
             audioSource.PlayOneShot(triggerSound); // Memainkan suara satu kali
         }
-
-
-
-
     }
 
     private IEnumerator MoveBombDown(GameObject bomb)
@@ -168,5 +164,11 @@ public class gameManager2 : MonoBehaviour
             bomb.transform.Translate(Vector3.down * obstacleSpeed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    public void MovetoMainMenuGame()
+    {
+
+        SceneManager.LoadScene(0);
     }
 }
