@@ -68,7 +68,7 @@ public class mainManager : MonoBehaviour
             string json = File.ReadAllText(path);
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
 
-            live = data.bestScorex;
+            bestScore = data.bestScorex;
             Debug.Log("Loaded highest lives: " + live);
         }
         else

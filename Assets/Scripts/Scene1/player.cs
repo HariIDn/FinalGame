@@ -60,7 +60,7 @@ public class player : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         // Reset lompatan saat menyentuh tanah atau pilar
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pillar"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Pillar") || other.gameObject.CompareTag("BridgePlatform"))
         {
             jumpCount = 0;
         }

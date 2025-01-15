@@ -12,7 +12,7 @@ public class StartScript : MonoBehaviour
     void Start()
     {
         mainManager.Instance.LoadLivesData();
-        bestscoretext.text = "Best Score: " + mainManager.Instance.live;
+        bestscoretext.text = "Best Score: " + mainManager.Instance.bestScore;
         
     }
 
@@ -30,7 +30,7 @@ public class StartScript : MonoBehaviour
             mainManager.Instance.PlayBGM(); // Mainkan musik BGM
             mainManager.Instance.live = 3;
         }
-
+        Time.timeScale = 1f;
         // Pindah ke Scene berikutnya (Scene 1)
         SceneManager.LoadScene(1);
     }

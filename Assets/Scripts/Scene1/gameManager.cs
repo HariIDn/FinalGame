@@ -28,6 +28,8 @@ public class gameManager : MonoBehaviour
 
     private bool isMovingPlatform = false; // Menandai apakah platform sedang bergerak
     private bool isGameOver = false;
+    private bool allowPlatformSpawn = true; // Defaultnya diaktifkan
+
 
     public AudioClip gameOverSound1; // Tambahkan AudioClip untuk Game Over pertama
     public AudioClip gameOverSound2; // Tambahkan AudioClip untuk Game Over kedua
@@ -45,6 +47,9 @@ public class gameManager : MonoBehaviour
         }
 
         livestext.text = ": " + mainManager.Instance.live;
+
+        // Reset flag spawn
+        allowPlatformSpawn = true;
 
     }
 
@@ -195,6 +200,8 @@ public class gameManager : MonoBehaviour
     // Fungsi untuk spawn platform baru
     public void SpawnBridgePlatform()
     {
+        if (!allowPlatformSpawn) return; // Jika spawn tidak diizinkan, hentikan fungsi
+
         if (spawnedPlatforms < spawnPositionsBridge.Length) // Cek apakah masih ada posisi untuk spawn
         {
             Vector3 spawnPosition = spawnPositionsBridge[spawnedPlatforms]; // Ambil posisi spawn berdasarkan urutan
@@ -233,6 +240,22 @@ public class gameManager : MonoBehaviour
 
         // Pindah ke Main Menu (scene 0)
         SceneManager.LoadScene(0);
+
+        // Matikan mekanisme spawn platform
+        allowPlatformSpawn = false;
+
+        // Hapus semua BridgePlatform yang tersisa
+        ClearAllPlatforms();
     }
+
+    private void ClearAllPlatforms()
+    {
+        GameObject[] platforms = GameObject.FindGameObjectsWithTag("BridgePlatform");
+        foreach (GameObject platform in platforms)
+        {
+            Destroy(platform);
+        }
+    }
+
 
 }
