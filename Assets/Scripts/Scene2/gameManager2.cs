@@ -137,7 +137,7 @@ public class gameManager2 : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(1f); // Wait 1 second
+        yield return new WaitForSeconds(0.7f); // Wait 1 second
 
         // Move bombs downward using Translate
         if (Bomb != null)

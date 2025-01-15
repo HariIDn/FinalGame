@@ -7,7 +7,7 @@ using System;
 public class mainManager : MonoBehaviour
 {
     public int live = 3;
-    public int bestScore = 0;
+    public int bestScore;
 
     public static mainManager Instance;
 
